@@ -1,41 +1,41 @@
 #include <iostream>
-
 using namespace std;
-
 struct Node {
-	int data;
-	Node *next;
+        int data;
+        Node *next;
 };
+int main(){
 
-int main() {
+        Node * first = nullptr;
+        first=nullptr;
+        Node * last = nullptr;
+        last=nullptr;
+        Node *current=nullptr;
 
-	//Node *first=new Node {1,nullptr};
-	//Node *second=new Node {2,nullptr};
-	//first->next=second;
 
-	//Node *second=new Node {2,nullptr};
-	//Node *first=new Node {1,second};
+        int n=0;
+        while(cin>>n) {
+                Node *node=new Node {n,nullptr};
+                if(current == nullptr){
+                current=node;
+                first=current;
+                continue;
+                }
+                current->next = node;
+                current = node;
+        }
 
-	Node * first = new Node;
-	first=nullptr;
-	Node * last = new Node;
- 	last=nullptr;
+        last = current;
 
-	int n=0;
-	while(cin>>n) {
-		Node *node=new Node {n,nullptr};
-		node->data=n;
-		node->next=first;
-		first = node;
-	}
+        Node *curr=first;
+        do {
+                cout<<curr->data;
+                if(curr->next!=nullptr)
+                        cout<<" -> ";
+                curr=curr->next;
+        } while (curr!=nullptr);
 
-	Node *curr=first;
-	do {
-		cout<<curr->data;
-		if(curr->next!=nullptr)
-			cout<<" -> ";
-		curr=curr->next;
-	} while (curr!=nullptr);
+        cout<<endl;
 
-	return 0;
+return 0;
 }
